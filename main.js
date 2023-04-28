@@ -6,11 +6,14 @@ function btnClicked() {
   axios
     .get("https://swapi.dev/api/planets/2")
     .then((res) => {
-      for (let i in res.data.residents) {// data here represents property residents (which is an array) in planet object in array position 2
+      for (let i in res.data.residents) {
+        // data here represents property residents (which is an array) in planet object in array position 2
         //   console.log(res.data.residents[i]);
-        axios.get(res.data.residents[i]).then((res) => { //accessing each alement of residents array response.data.name
+        axios.get(res.data.residents[i]).then((res) => {
+          //accessing each alement of residents array response.data.name
+          // For each resident, we make another axios.get request to get their information and create an h2 element to display their name on the page.
           let h2 = document.createElement("h2");
-          h2.textContent = res.data.name; 
+          h2.textContent = res.data.name;
           document.body.appendChild(h2);
         });
         // axios.get("https://swapi.dev/api/people/68/");
